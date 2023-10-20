@@ -13,9 +13,7 @@ const Hero = () => {
               <h1>MERN Authentication</h1>
             </Card.Title>
             <Card.Text>
-              <p>
                 This is boilerplate for MERN authentication including json web tokens, bcrypt, and react-bootstrap.
-              </p>
             </Card.Text>
             <div className="d-flex justify-content-center my-4">
               <LinkContainer to='/login'>

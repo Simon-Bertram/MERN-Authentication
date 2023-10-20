@@ -1,3 +1,4 @@
+import { LinkContainer } from 'react-router-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -17,12 +18,16 @@ const Hero = () => {
               </p>
             </Card.Text>
             <div className="d-flex justify-content-center my-4">
-              <Button variant='primary' href='/login' className='me-3'>
-                Sign In
-              </Button>
-              <Button variant='secondary' href='/register' className='me-3'>
-                Sign Up
-              </Button>
+              <LinkContainer to='/login'>
+                <Button variant='primary' className='me-3'>
+                  Sign In
+                </Button>
+              </LinkContainer>
+              <LinkContainer to='/register'>
+                <Button variant='secondary' href='/register' className='me-3'>
+                  Sign Up
+                </Button>
+              </LinkContainer>
             </div>
           </Card.Body>
         </Card>

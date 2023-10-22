@@ -8,6 +8,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { toast } from 'react-toastify';
+import Loader from '../components/Loader';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +18,7 @@ const LoginScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [login, { isLoading, error, data }] = useLoginMutation();
+  const [login, { isLoading, error }] = useLoginMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -30,10 +32,10 @@ const LoginScreen = () => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials(res));
+      dispatch(setCredentials({ ...res }));
       navigate('/');
     } catch (error) {
-      console.log(error?.data?.message || error.error.message);
+      toast.error(error?.data?.message || error.error.message);
     }
   }
 
@@ -58,6 +60,9 @@ const LoginScreen = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}>
           </Form.Control>
+
+          { isLoading && <Loader /> }
+
           <Button type='submit' variant='primary' className='my-4'>
             Sign In
           </Button>

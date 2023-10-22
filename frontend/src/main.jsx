@@ -12,26 +12,20 @@ import App from './App.jsx'
 import HomeScreen from './screens/HomeScreen.jsx'
 import LoginScreen from './screens/LoginScreen.jsx'
 import RegisterScreen from './screens/RegisterScreen.jsx'
+import ProjectCode from './pages/ProjectCode.jsx'
 import ErrorScreen from './screens/ErrorScreen.jsx'
+import ProfileScreen from './screens/ProfileScreen.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.scss'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route 
-      path="/" 
-      element={<App />} 
-      errorElement={<ErrorScreen /> }>
-      <Route 
-        index={true} 
-        path="/" 
-        element={<HomeScreen />} />
-      <Route 
-        path="/login" 
-        element={<LoginScreen />} />
-      <Route
-        path="/register"
-        element={<RegisterScreen />} />
+    <Route path="/" element={<App />} errorElement={<ErrorScreen /> }>
+      <Route index={true} path="/" element={<HomeScreen />} />
+      <Route path="/project-code"  element={<ProjectCode />} />
+      <Route path="/login"         element={<LoginScreen />} />
+      <Route path="/register"      element={<RegisterScreen />} />
+      <Route path="/profile"       element={<ProfileScreen />} />
     </Route>,
   ),
 );

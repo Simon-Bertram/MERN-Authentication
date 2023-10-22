@@ -38,6 +38,14 @@ main {
   margin-right: 0;
 }
 
+.accordion-item {
+  margin-bottom: 2rem;
+}
+
+.accordion-body li {
+  margin-bottom: 0.75rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

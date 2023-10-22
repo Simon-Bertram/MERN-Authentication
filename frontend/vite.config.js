@@ -10,6 +10,8 @@ export default defineConfig({
       proxy: {
         target: 'http://localhost:8000',
         changeOrigin: true,
+        secure: process.env.NODE_ENV === 'production',
+        ws: true,
       }
     }
   }

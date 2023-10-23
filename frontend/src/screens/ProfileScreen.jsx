@@ -36,7 +36,11 @@ const ProfileScreen = () => {
         dispatch(setCredentials({ ...res }));
         navigate('/');
       } catch (error) {
-        toast.error(error?.data?.message || error.error.message);
+        if (error) {
+          toast.error(error?.data?.message || error.error.message);
+        } else {
+          toast.error('Something went wrong');
+        }
       }
     }
   }

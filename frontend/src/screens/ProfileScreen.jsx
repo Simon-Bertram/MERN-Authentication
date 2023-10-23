@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
+import { useUpdateUserMutation } from '../slices/usersApiSlice';
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
@@ -19,6 +20,8 @@ const ProfileScreen = () => {
   const dispatch = useDispatch();
 
   const { userInfo } = useSelector((state) => state.auth);
+
+  const [updateProfile, { isLoading }] = useUpdateUserMutation();
 
   useEffect(() => {
     setName(userInfo.name);
@@ -32,7 +35,7 @@ const ProfileScreen = () => {
       return;
     } else {
       try {
-        const res = await register({ name, email, password }).unwrap();
+        const res = await updateProfile({ name, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
         navigate('/');
       } catch (error) {
